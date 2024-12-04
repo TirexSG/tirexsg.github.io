@@ -1,0 +1,134 @@
+/* Estilo básico */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Fondo oscuro para toda la página */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineado al principio para usar más el espacio vertical */
+  min-height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+  flex-direction: column; /* Asegura que los elementos se alineen verticalmente */
+  padding-left: 40px; /* Añadir padding lateral */
+  padding-right: 40px; /* Añadir padding lateral */
+  padding-top: 40px; /* Añadir padding superior */
+}
+
+/* Contenedor principal */
+.container {
+  width: 100%; /* Ancho al 100% */
+  max-width: 1200px; /* Limita el tamaño máximo a 1200px */
+  background-color: #121212; /* Fondo negro para el contenido */
+  margin: 0 auto;
+  padding: 40px; /* Padding a todo el contenedor */
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column; /* Para que las secciones se apilen verticalmente */
+  justify-content: flex-start; /* Cambiado para aprovechar más el espacio */
+}
+
+/* Header */
+.__header {
+  text-align: center;
+  padding: 50px 20px; /* Mayor padding para dar más espacio vertical */
+  background-color: #121212; /* Fondo negro para el encabezado */
+  border-bottom: 3px solid #333;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 250px; /* Reducido tamaño de la imagen */
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.__header h1 {
+  font-size: 4em;
+  margin: 0;
+}
+
+.__header p {
+  font-size: 1.5em;
+  color: #bbb;
+}
+
+/* Secciones */
+main {
+  padding: 40px 20px;
+  flex-grow: 1; /* Hace que el contenido de main ocupe el espacio restante */
+}
+
+.section {
+  margin-bottom: 80px; /* Mayor separación entre secciones */
+}
+
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #f2f2f2;
+}
+
+.section p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #ddd;
+  margin: 10px 0;
+}
+
+/* Apps */
+.apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px; /* Mayor separación entre los elementos */
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.apps a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s;
+}
+
+.apps a:hover {
+  transform: scale(1.1);
+}
+
+.apps img {
+  width: 250px; /* Aumentado tamaño de las imágenes */
+  height: 250px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Contact */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px; /* Mayor separación entre los iconos */
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.contact a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.contact i {
+  font-size: 50px; /* Aumentado tamaño de los iconos */
+  margin-right: 10px;
+}
