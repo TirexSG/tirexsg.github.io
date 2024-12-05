@@ -136,6 +136,11 @@ body {
     font-size: 1.5em;
   }
 
+  .apps {
+    width: 100px;
+    height: auto
+  }
+
   .apps img {
     width: 100px; /* Reducir el ancho de las imágenes en pantallas medianas */
     height: auto;
@@ -166,6 +171,11 @@ body {
     font-size: 1.2em;
   }
 
+  .apps {
+    width: 80px;
+    height: auto
+  }
+
   .apps img {
     width: 80px; /* Reducir aún más el ancho de las imágenes en pantallas pequeñas */
     height: auto;
@@ -181,5 +191,4 @@ body {
     margin-right: 5px; /* Reducir el espacio entre el ícono y el texto */
   }
 }
-
 
