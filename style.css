@@ -10,6 +10,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   padding: 20px; /* Margen reducido */
+  overflow-x: hidden; /* Evitar desplazamiento horizontal */
 }
 
 /* Contenedor principal */
@@ -22,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow-x: hidden; /* Evitar desplazamiento horizontal */
 }
 
 /* Header */
@@ -84,7 +86,8 @@ body {
 }
 
 .apps img {
-  width: 200px; /* Ajusta el ancho de las imágenes */
+  width: 100%; /* Usa 100% para que se ajuste al contenedor */
+  max-width: 200px; /* Asegura que no sea mayor de 200px */
   height: auto; /* Mantén la proporción */
   aspect-ratio: 1 / 1;
   border-radius: 10px; /* Bordes redondeados */
@@ -136,13 +139,8 @@ body {
     font-size: 1.5em;
   }
 
-  .apps {
-    width: 100px;
-    height: auto
-  }
-
   .apps img {
-    width: 100px; /* Reducir el ancho de las imágenes en pantallas medianas */
+    max-width: 100px; /* Reducir el ancho máximo de las imágenes en pantallas medianas */
     height: auto;
     border-radius: 10px;
   }
@@ -171,13 +169,8 @@ body {
     font-size: 1.2em;
   }
 
-  .apps {
-    width: 80px;
-    height: auto
-  }
-
   .apps img {
-    width: 80px; /* Reducir aún más el ancho de las imágenes en pantallas pequeñas */
+    max-width: 80px; /* Reducir aún más el ancho máximo de las imágenes en pantallas pequeñas */
     height: auto;
     border-radius: 10px;
   }
@@ -191,4 +184,3 @@ body {
     margin-right: 5px; /* Reducir el espacio entre el ícono y el texto */
   }
 }
-
