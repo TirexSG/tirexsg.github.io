@@ -94,24 +94,23 @@ body {
 /* Contact */
 .contact {
   display: flex;
-  flex-wrap: wrap;
-  gap: 100px; /* Espaciado aumentado */
-  justify-content: center;
-  margin-top: 50px; /* Espacio extra arriba */
+  justify-content: space-around; /* Distribuye los elementos horizontalmente con espacio entre ellos */
+  align-items: center;
+  margin-top: 50px; 
+  flex-wrap: nowrap; /* Asegura que los elementos no se envuelvan a la siguiente línea */
 }
 
 .contact a {
   text-decoration: none;
   color: #fff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.2em; /* Tamaño de fuente aumentado */
+  align-items: center; /* Alinea los elementos horizontalmente */
+  font-size: 1.5em; /* Tamaño de fuente aumentado */
 }
 
 .contact i {
-  font-size: 40px; /* Tamaño de ícono aumentado */
-  margin-bottom: 10px; /* Espacio extra debajo del ícono */
+  font-size: 50px; /* Tamaño de ícono aumentado */
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
 }
 
 /* Media Queries */
@@ -160,3 +159,4 @@ body {
     border-radius: 10px;
   }
 }
+
