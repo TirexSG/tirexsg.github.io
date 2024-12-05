@@ -137,7 +137,18 @@ body {
   }
 
   .apps img {
+    width: 100px; /* Reducir el ancho de las imágenes en pantallas medianas */
+    height: auto;
     border-radius: 10px;
+  }
+
+  .contact a {
+    font-size: 1.2em; /* Reducir el tamaño de la fuente en pantallas medianas */
+  }
+
+  .contact i {
+    font-size: 30px; /* Reducir el tamaño de los iconos en pantallas medianas */
+    margin-right: 5px; /* Reducir el espacio entre el ícono y el texto */
   }
 }
 
@@ -156,7 +167,19 @@ body {
   }
 
   .apps img {
+    width: 80px; /* Reducir aún más el ancho de las imágenes en pantallas pequeñas */
+    height: auto;
     border-radius: 10px;
   }
+
+  .contact a {
+    font-size: 1em; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+  }
+
+  .contact i {
+    font-size: 20px; /* Reducir aún más el tamaño de los iconos en pantallas pequeñas */
+    margin-right: 5px; /* Reducir el espacio entre el ícono y el texto */
+  }
 }
+
 
