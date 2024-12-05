@@ -2,133 +2,161 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #121212; /* Fondo oscuro para toda la página */
+  background-color: #121212; /* Fondo oscuro */
   color: #fff;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alineado al principio para usar más el espacio vertical */
-  min-height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
-  flex-direction: column; /* Asegura que los elementos se alineen verticalmente */
-  padding-left: 40px; /* Añadir padding lateral */
-  padding-right: 40px; /* Añadir padding lateral */
-  padding-top: 40px; /* Añadir padding superior */
+  align-items: flex-start;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 20px; /* Margen reducido */
 }
 
 /* Contenedor principal */
 .container {
-  width: 100%; /* Ancho al 100% */
-  max-width: 1200px; /* Limita el tamaño máximo a 1200px */
-  background-color: #121212; /* Fondo negro para el contenido */
+  width: 100%;
+  max-width: 1200px;
+  background-color: #121212;
   margin: 0 auto;
-  padding: 40px; /* Padding a todo el contenedor */
-  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  padding: 20px;
   display: flex;
-  flex-direction: column; /* Para que las secciones se apilen verticalmente */
-  justify-content: flex-start; /* Cambiado para aprovechar más el espacio */
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* Header */
 .__header {
   text-align: center;
-  padding: 50px 20px; /* Mayor padding para dar más espacio vertical */
-  background-color: #121212; /* Fondo negro para el encabezado */
-  border-bottom: 3px solid #333;
-}
-
-.header-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 30px 20px;
+  border-bottom: 2px solid #333;
 }
 
 .profile-pic {
-  width: 250px; /* Reducido tamaño de la imagen */
-  height: 250px;
-  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* Asegura que sea redonda */
   object-fit: cover;
-  margin-bottom: 20px;
 }
 
 .__header h1 {
-  font-size: 4em;
-  margin: 0;
+  font-size: 2.5em;
 }
 
 .__header p {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #bbb;
 }
 
 /* Secciones */
-main {
-  padding: 40px 20px;
-  flex-grow: 1; /* Hace que el contenido de main ocupe el espacio restante */
-}
-
 .section {
-  margin-bottom: 80px; /* Mayor separación entre secciones */
+  margin-bottom: 40px;
 }
 
 .section h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 20px;
-  color: #f2f2f2;
 }
 
 .section p {
-  font-size: 1.2em;
-  line-height: 1.8;
-  color: #ddd;
-  margin: 10px 0;
+  font-size: 1em;
+  line-height: 1.6;
 }
 
 /* Apps */
 .apps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px; /* Mayor separación entre los elementos */
-  justify-content: space-between;
+  display: grid; /* Usa un grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo */
+  gap: 10px; /* Espaciado reducido */
   margin-top: 50px;
 }
 
 .apps a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-decoration: none;
   color: #fff;
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .apps a:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); 
 }
 
 .apps img {
-  width: 250px; /* Aumentado tamaño de las imágenes */
-  height: 250px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  width: 200px; /* Ajusta el ancho de las imágenes */
+  height: auto; /* Mantén la proporción */
+  aspect-ratio: 1 / 1;
+  border-radius: 10px; /* Bordes redondeados */
+  object-fit: cover; /* Escala y recorta para llenar el espacio */
 }
 
 /* Contact */
 .contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px; /* Mayor separación entre los iconos */
-  justify-content: space-between;
-  margin-top: 60px;
+  gap: 100px; /* Espaciado aumentado */
+  justify-content: center;
+  margin-top: 50px; /* Espacio extra arriba */
 }
 
 .contact a {
-  display: flex;
-  align-items: center;
   text-decoration: none;
   color: #fff;
-  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em; /* Tamaño de fuente aumentado */
 }
 
 .contact i {
-  font-size: 50px; /* Aumentado tamaño de los iconos */
-  margin-right: 10px;
+  font-size: 40px; /* Tamaño de ícono aumentado */
+  margin-bottom: 10px; /* Espacio extra debajo del ícono */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 20px 10px;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .__header h1 {
+    font-size: 2em;
+  }
+
+  .section h2 {
+    font-size: 1.5em;
+  }
+
+  .apps img {
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+
+  .__header h1 {
+    font-size: 1.8em;
+  }
+
+  .section h2 {
+    font-size: 1.2em;
+  }
+
+  .apps img {
+    border-radius: 10px;
+  }
 }
