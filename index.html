@@ -1,88 +1,413 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="icon" href="https://i.imgur.com/3vlPdHl.png" type="image/x-icon"> 
-  <link rel="shortcut icon" href="https://i.imgur.com/3vlPdHl.png" type="image/x-icon">
-  <title>TirexSG - Mobile Developer</title>
-  <meta name="description" content="Welcome to the portfolio of Tirex, a mobile developer specialized in mobile applications with Kotlin. Explore my projects and contact me.">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirexSG - Mobile Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<link rel="icon" href="https://i.imgur.com/3vlPdHl.png" type="image/x-icon">
+<style type="text/tailwindcss">
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #121212;
+    --bg-card: #181818;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A3A3A3;
+    --accent: #38BDF8;
+    --border-color: #262626;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  .nav-link { position: relative; transition: color 0.3s; }
+  .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: var(--accent);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+  }
+  .nav-link:hover { color: var(--text-primary); }
+  .nav-link:hover:after { width: 100%; }
+  .glassmorphism {
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+  }
+
+  .app-card {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s; 
+  }
+
+  .app-card img {
+    flex-shrink: 0;
+  }
+
+  .app-card > a,
+  .app-card > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--accent)] text-[var(--bg-primary)] font-semibold py-3 px-8 rounded-full transition-transform duration-300 hover:scale-105;
+  }
+
+  
+  .app-subtext {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.2rem;
+    min-height: 2.4rem; 
+    display: flex;
+    align-items: center; 
+  }
+
+  .apps-track {
+    display: flex;
+    gap: 2.5rem; 
+    align-items: stretch;
+  }
+
+  .scrolling-wrapper {
+    will-change: transform;
+    display: block;
+    overflow: hidden;
+  }
+  .scrolling-track {
+    display: flex;
+    align-items: stretch;
+    gap: 2.5rem;
+    transform: translateX(0);
+  }
+
+  .tag-green { background-color: rgba(16,185,129,0.08); color: #34D399; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; }
+  .tag-orange { background-color: rgba(249,115,22,0.08); color: #FB923C; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; }
+  .tag-purple { background-color: rgba(139,92,246,0.08); color: #C084FC; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; }
+
+  @media (max-width: 640px) {
+    .apps-track { gap: 1.25rem; }
+  }
+</style>
 </head>
-<body>
-  <div class="container">
-    <header class="__header">
-      <div class="header-content">
-        <img src="https://i.imgur.com/jLI0uXi.jpeg" alt="Profile Picture" class="profile-pic" />
-        <div>
-          <h1>Tirex</h1>
-          <p>Mobile Developer</p>
+
+<body class="antialiased">
+<header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img alt="Tirex logo" class="h-10 w-10 rounded-full object-cover" src="https://i.imgur.com/jLI0uXi.jpeg"/>
+      <div>
+        <span class="text-xl font-bold text-white tracking-wider">Tirex</span>
+        <div class="text-[var(--text-secondary)] text-xs">Mobile Developer</div>
+      </div>
+    </div>
+    <nav class="hidden md:flex items-center space-x-8">
+      <a class="text-gray-400 nav-link font-medium" href="#about">Sobre Mí</a>
+      <a class="text-gray-400 nav-link font-medium" href="#skills">Habilidades</a>
+      <a class="text-gray-400 nav-link font-medium" href="#apps">Portfolio</a>
+      <a class="text-gray-400 nav-link font-medium" href="#contact">Contacto</a>
+    </nav>
+    <a class="hidden md:block btn-primary" href="#contact">Contactar</a>
+    <button class="md:hidden text-white">
+      <span class="material-icons">menu</span>
+    </button>
+  </div>
+</header>
+
+<main class="pt-20">
+  <section class="min-h-screen flex items-center bg-[var(--bg-primary)] relative overflow-hidden" id="hero">
+    <div class="absolute inset-0 z-0 opacity-20">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.3)_0%,_transparent_50%)]"></div>
+    </div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <img alt="Tirex profile picture" class="w-40 h-40 rounded-full mx-auto mb-6 object-cover border-4 border-gray-800 shadow-2xl" src="https://i.imgur.com/jLI0uXi.jpeg"/>
+      <h1 class="text-4xl md:text-6xl font-bold text-[var(--text-primary)] leading-tight">
+        Creando Experiencias Móviles <br class="hidden md:block"/> que <span class="text-[var(--accent)]">Inspiran</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+        Desarrollador móvil especializado en Android nativo (Kotlin/Jetpack Compose) y multiplataforma (Compose Multiplatform). Transformo ideas en apps fluidas y escalables.
+      </p>
+      <div class="mt-10 flex justify-center items-center gap-4">
+        <a class="btn-primary" href="#apps">Ver mi trabajo</a>
+        <a class="font-semibold py-3 px-8 rounded-full transition-colors duration-300 hover:bg-[var(--bg-card)] border border-[var(--border-color)]" href="#about">Saber más</a>
+      </div>
+    </div>
+  </section>
+
+<section class="py-28 bg-[var(--bg-primary)]" id="about">
+  <div class="container mx-auto px-6">
+    
+    <div class="text-center mb-16 max-w-2xl mx-auto" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-white">Sobre Mí</h2>
+      <p class="text-[var(--text-secondary)] mt-3 text-lg">
+        Persistencia, constancia y pasión por el desarrollo móvil.
+      </p>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 items-center">
+      
+      <div class="md:col-span-1 flex justify-center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="relative w-full max-w-xs group">
+          <img alt="Sergio Gómez de Aranda" 
+               class="object-cover w-64 h-64 rounded-lg mx-auto shadow-2xl border-4 border-gray-800 transition-transform duration-300" 
+               src="https://i.imgur.com/XsgPdkL.jpeg"/>
         </div>
       </div>
-    </header>
-    <main>
-      <section id="home" class="section">
-        <h2>Welcome to My Portfolio</h2>
+
+      <div class="md:col-span-2 text-lg text-[var(--text-secondary)] leading-relaxed space-y-6" data-aos="fade-left" data-aos-delay="200">
         <p>
-          I create intuitive and visually stunning mobile applications with Kotlin. 
-          Whether it's a practical utility app or a captivating user interface,
-          my focus is on delivering exceptional mobile experiences.
+          Hola, soy <strong class="text-white">Sergio Gómez de Aranda</strong> (Tirex), programador especializado en el desarrollo de aplicaciones móviles, con <strong class="text-white">más de 2 años dedicados de forma intensa</strong> a aprender, practicar y crear proyectos en este ámbito.
         </p>
-      </section>
-      <section id="about" class="section">
-        <h2>About Me</h2>
         <p>
-          Hi! I'm Sergio Gómez de Aranda, also known as Tirex.<br>
-          I've been programming for two years, and in the past year, I have
-          developed a strong passion for mobile development, particularly Kotlin. <br>
-          I am focused on enhancing my skills every day, with the goal
-          of mastering Android application development. My experience
-          in competitive gaming has also enhanced my problem-solving abilities
-          and teamwork skills.
+          Me considero una persona <strong class="text-white">persistente</strong> y <strong class="text-white">constante</strong>, que disfruta afrontando retos complejos y buscando siempre soluciones eficientes. 
+          Mi objetivo es lograr un <strong class="text-white">código limpio</strong>, un <strong class="text-white">rendimiento sólido</strong> y una experiencia de usuario que realmente marque la diferencia.
         </p>
-      </section>
-      <section id="apps" class="section">
-        <h2>My Apps</h2>
-        <div class="apps">
-          <a href="https://play.google.com/store/apps/details?id=com.tirex.mindplanner&hl=es_419" target="_blank">
-            <img src="https://i.imgur.com/FbjylVk.png" alt="MindPlanner" />
-            <p>MindPlanner</p>
-          </a>
-          <a href="https://github.com/TirexSG/Pokedex-APP" target="_blank">
-            <img src="https://i.imgur.com/hP9TSTm.jpeg" alt="PokemonApp" />
-            <p>PokemonApp</p>
-          </a>
-          <a href="https://github.com/TirexSG/Marvel-List" target="_blank">
-            <img src="https://i.imgur.com/NOzwowf.jpeg" alt="MarvelApp" />
-            <p>MarvelApp</p>
-          </a>
-        </div>
-      </section>
-      <section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <div class="contact">
-    <a href="mailto:sergiogdas@gmail.com">
-      <i class="bx bxl-gmail"></i>
-      <p>Gmail</p>
-    </a>
-    <a href="https://github.com/TirexSG" target="_blank">
-      <i class="bx bxl-github"></i>
-      <p>GitHub</p>
-    </a>
-    <a href="https://www.linkedin.com/in/sergiogomezdearanda/" target="_blank">
-      <i class="bx bxl-linkedin"></i>
-      <p>LinkedIn</p>
-    </a>
-    <a href="https://www.instagram.com/tirexdev/" target="_blank">
-      <i class="bx bxl-instagram"></i>
-      <p>Instagram</p>
-    </a>
+        <p>
+          Sigo en constante evolución, aprendiendo nuevas técnicas y herramientas para mantenerme siempre un paso por delante en el mundo del desarrollo móvil.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
-    </main>
+
+
+
+<section id="habilidades" class="py-16 bg-[var(--bg-section)]">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-10 text-center">Habilidades Técnicas</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+
+      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+        <h3 class="text-lg font-bold text-white">Compose Multiplatform</h3>
+      </div>
+
+      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+        <h3 class="text-lg font-bold text-white">Kotlin</h3>
+      </div>
+
+      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+        <h3 class="text-lg font-bold text-white">Jetpack Compose</h3>
+      </div>
+
+      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+        <h3 class="text-lg font-bold text-white">MySQL</h3>
+      </div>
+
+      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+        <h3 class="text-lg font-bold text-white">Java</h3>
+      </div>
+
+      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+        <h3 class="text-lg font-bold text-white">Firebase</h3>
+      </div>
+
+    </div>
   </div>
+</section>
+
+
+
+
+
+<section class="py-24 bg-[var(--bg-primary)]" id="apps">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white">Mi Portfolio de Apps</h2>
+      <p class="text-[var(--text-secondary)] mt-2">Una selección de mis proyectos más recientes.</p>
+    </div>
+  </div>
+
+  <div class="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
+    <div class="scrolling-wrapper">
+      <div class="scrolling-track apps-track" id="appsTrack">
+        
+        <div class="w-[300px] flex-shrink-0 app-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl overflow-hidden transition-transform duration-300 shadow-lg">
+          <a href="https://play.google.com/store/apps/details?id=com.tirex.mindplanner&hl=es_419" target="_blank" class="block h-full">
+            <div class="bg-white p-6 flex items-center justify-center h-[180px]">
+              <img alt="MindPlanner" src="https://i.imgur.com/NJOvzEH.png" class="max-h-full max-w-full object-contain" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow h-full">
+              <h3 class="text-lg font-semibold text-white leading-tight">MindPlanner</h3>
+              <p class="app-subtext mt-1">Planificador personal</p>
+              <div class="flex-grow"></div>
+              <div class="flex items-center justify-between text-xs pt-3 border-t border-gray-700/50 mt-3">
+                <span class="flex items-center gap-2">
+                  <i class="fab fa-android text-[var(--text-secondary)]"></i>
+                </span>
+                <span class="tag-green">Jetpack Compose</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="w-[300px] flex-shrink-0 app-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl overflow-hidden transition-transform duration-300 shadow-lg">
+          <a href="https://github.com/TirexSG/Pokedex-APP" target="_blank" class="block h-full">
+            <div class="bg-white p-6 flex items-center justify-center h-[180px]">
+              <img alt="Pokedex" src="https://i.imgur.com/hP9TSTm.jpeg" class="max-h-full max-w-full object-contain" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow h-full">
+              <h3 class="text-lg font-semibold text-white leading-tight">Pokedex</h3>
+              <p class="app-subtext mt-1 leading-tight">App de Pokédex</p>
+              <div class="flex-grow"></div>
+              <div class="flex items-center justify-between text-xs pt-3 border-t border-gray-700/50 mt-3">
+                <span class="flex items-center gap-2">
+                  <i class="fab fa-android text-[var(--text-secondary)]"></i>
+                </span>
+                <span class="tag-orange">XML</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="w-[300px] flex-shrink-0 app-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl overflow-hidden transition-transform duration-300 shadow-lg">
+          <a href="https://github.com/TirexSG/Marvel-List" target="_blank" class="block h-full">
+            <div class="bg-white p-6 flex items-center justify-center h-[180px]">
+              <img alt="MarvelList" src="https://i.imgur.com/NOzwowf.jpeg" class="max-h-full max-w-full object-contain" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow h-full">
+              <h3 class="text-lg font-semibold text-white leading-tight">MarvelList</h3>
+              <p class="app-subtext mt-1 leading-tight">Lista y detalles de personajes</p>
+              <div class="flex-grow"></div>
+              <div class="flex items-center justify-between text-xs pt-3 border-t border-gray-700/50 mt-3">
+                <span class="flex items-center gap-2">
+                  <i class="fab fa-android text-[var(--text-secondary)]"></i>
+                </span>
+                <span class="tag-orange">XML</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="w-[300px] flex-shrink-0 app-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl overflow-hidden transition-transform duration-300 shadow-lg">
+          <div class="block h-full">
+            <div class="bg-white p-6 flex items-center justify-center h-[180px]">
+              <img alt="Farmy" src="https://i.imgur.com/ZHgUuzi.png" class="max-h-full max-w-full object-contain" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow h-full">
+              <h3 class="text-lg font-semibold text-white leading-tight">Farmy</h3>
+              <p class="app-subtext mt-1 leading-tight">Coming soon...</p>
+              <div class="flex-grow"></div>
+              <div class="flex items-center justify-between text-xs pt-3 border-t border-gray-700/50 mt-3">
+                <span class="flex items-center gap-2">
+                  <i class="fab fa-apple text-[var(--text-secondary)]"></i>
+                  <i class="fab fa-android text-[var(--text-secondary)]"></i>
+                </span>
+                <span class="tag-purple">Compose Multiplatform</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="py-24 bg-[var(--bg-secondary)]" id="contact">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-white">¿Listo para empezar?</h2>
+        <p class="text-[var(--text-secondary)] mt-2 max-w-2xl mx-auto">Estoy disponible para proyectos freelance y colaboraciones. Si tienes una idea que te gustaría discutir, ¡no dudes en contactarme!</p>
+      </div>
+      <div class="max-w-md mx-auto text-center">
+        <a class="inline-block btn-primary text-lg mb-8" href="mailto:tirexmobiledev@gmail.com">tirexmobiledev@gmail.com</a>
+        <div class="flex justify-center space-x-6 text-3xl">
+          <a class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110" href="https://github.com/TirexSG" target="_blank">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110" href="https://www.linkedin.com/in/sergiogomezdearanda/" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110" href="https://www.instagram.com/tirexdev/" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-[var(--bg-primary)] py-6 border-t border-[var(--border-color)]">
+  <div class="container mx-auto px-6 text-center text-[var(--text-secondary)]">
+    <p>© 2025 TirexSG. Diseñado y desarrollado con pasión.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const track = document.getElementById('appsTrack');
+  if (!track) return;
+
+  const speed = 0.6;
+
+  let translateX = 0;
+  let lastTimestamp = null;
+
+ 
+  function ensureFill() {
+    const containerWidth = track.parentElement.offsetWidth;
+    let total = 0;
+    for (let i=0;i<track.children.length;i++) total += track.children[i].offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
+    while (total < containerWidth * 1.5) {
+      for (let i=0;i<track.children.length && total < containerWidth * 1.5;i++) {
+        const clone = track.children[i].cloneNode(true);
+        track.appendChild(clone);
+        total += clone.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
+      }
+    }
+  }
+
+  function step(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const dt = timestamp - lastTimestamp;
+    lastTimestamp = timestamp;
+    translateX -= speed * (dt / 16.67); 
+
+    const first = track.children[0];
+    const firstRect = first.getBoundingClientRect();
+    const parentRect = track.parentElement.getBoundingClientRect();
+
+    if (firstRect.right < parentRect.left) {
+      translateX += firstRect.width + parseFloat(getComputedStyle(track).gap || 0);
+      track.appendChild(first);
+    }
+
+    track.style.transform = `translateX(${translateX}px)`;
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', () => {
+    ensureFill();
+  });
+
+ 
+  window.addEventListener('load', () => {
+    ensureFill();
+    requestAnimationFrame(step);
+  });
+})();
+</script>
+
 </body>
 </html>
-
 
