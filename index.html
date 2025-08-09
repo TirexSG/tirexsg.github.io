@@ -109,7 +109,7 @@
 
 <body class="antialiased">
 <header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
-  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center flex-wrap">
     <div class="flex items-center space-x-3">
       <img alt="Tirex logo" class="h-10 w-10 rounded-full object-cover" src="https://i.imgur.com/jLI0uXi.jpeg"/>
       <div>
@@ -117,21 +117,32 @@
         <div class="text-[var(--text-secondary)] text-xs">Mobile Developer</div>
       </div>
     </div>
+    
     <nav class="hidden md:flex items-center space-x-8">
       <a class="text-gray-400 nav-link font-medium" href="#about">Sobre Mí</a>
-      <a class="text-gray-400 nav-link font-medium" href="#skills">Habilidades</a>
+      <a class="text-gray-400 nav-link font-medium" href="#habilidades">Habilidades</a>
       <a class="text-gray-400 nav-link font-medium" href="#apps">Portfolio</a>
       <a class="text-gray-400 nav-link font-medium" href="#contact">Contacto</a>
     </nav>
     <a class="hidden md:block btn-primary" href="#contact">Contactar</a>
-    <button class="md:hidden text-white">
+
+    <button id="mobile-menu-button" class="md:hidden text-white">
       <span class="material-icons">menu</span>
     </button>
+
+    <div id="mobile-menu" class="hidden w-full md:hidden mt-4">
+      <nav class="flex flex-col items-center space-y-4">
+        <a class="text-gray-300 hover:text-white" href="#about">Sobre Mí</a>
+        <a class="text-gray-300 hover:text-white" href="#habilidades">Habilidades</a>
+        <a class="text-gray-300 hover:text-white" href="#apps">Portfolio</a>
+        <a class="text-gray-300 hover:text-white" href="#contact">Contacto</a>
+        <a class="btn-primary w-full text-center mt-2" href="#contact">Contactar</a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<main class="pt-20">
-  <section class="min-h-screen flex items-center bg-[var(--bg-primary)] relative overflow-hidden" id="hero">
+<main class="pt-24"> <section class="min-h-screen flex items-center bg-[var(--bg-primary)] relative overflow-hidden" id="hero">
     <div class="absolute inset-0 z-0 opacity-20">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.3)_0%,_transparent_50%)]"></div>
     </div>
@@ -349,7 +360,7 @@
 
 <footer class="bg-[var(--bg-primary)] py-6 border-t border-[var(--border-color)]">
   <div class="container mx-auto px-6 text-center text-[var(--text-secondary)]">
-    <p>© 2025 TirexSG. Diseñado y desarrollado con pasión.</p>
+    <p class="text-sm">© 2025 TirexSG. Diseñado y desarrollado con pasión.</p>
   </div>
 </footer>
 
@@ -363,7 +374,7 @@
   let translateX = 0;
   let lastTimestamp = null;
 
- 
+  
   function ensureFill() {
     const containerWidth = track.parentElement.offsetWidth;
     let total = 0;
@@ -400,7 +411,7 @@
     ensureFill();
   });
 
- 
+  
   window.addEventListener('load', () => {
     ensureFill();
     requestAnimationFrame(step);
@@ -408,6 +419,23 @@
 })();
 </script>
 
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+ 
+  menuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
+
 </body>
 </html>
-
