@@ -104,6 +104,31 @@
   @media (max-width: 640px) {
     .apps-track { gap: 1.25rem; }
   }
+
+  /* --- AÑADIDO: Estilos para la animación del botón del menú --- */
+  .hamburger-line {
+    display: block;
+    width: 24px;  /* Ancho de las líneas */
+    height: 2px; /* Grosor de las líneas */
+    background-color: var(--text-primary);
+    border-radius: 1px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+  /* Espacio entre las líneas */
+  .hamburger-line:not(:last-child) {
+    margin-bottom: 6px;
+  }
+  /* Estado "abierto" (la 'X') */
+  #mobile-menu-button.open .hamburger-line:first-child {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #mobile-menu-button.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu-button.open .hamburger-line:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  /* --- FIN de estilos del botón --- */
 </style>
 </head>
 
@@ -126,8 +151,10 @@
     </nav>
     <a class="hidden md:block btn-primary" href="#contact">Contactar</a>
 
-    <button id="mobile-menu-button" class="md:hidden text-white">
-      <span class="material-icons">menu</span>
+    <button id="mobile-menu-button" class="md:hidden flex flex-col justify-center items-center w-10 h-10 z-50">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
     </button>
 
     <div id="mobile-menu" class="hidden w-full md:hidden mt-4">
@@ -161,86 +188,80 @@
       </div>
     </div>
   </section>
-</main>
 
-
-<section class="py-28 bg-[var(--bg-primary)]" id="about">
-  <div class="container mx-auto px-6">
-    
-    <div class="text-center mb-16 max-w-2xl mx-auto" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-white">Sobre Mí</h2>
-      <p class="text-[var(--text-secondary)] mt-3 text-lg">
-        Persistencia, constancia y pasión por el desarrollo móvil.
-      </p>
-    </div>
-
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 items-center">
+  <section class="py-28 bg-[var(--bg-primary)]" id="about">
+    <div class="container mx-auto px-6">
       
-      <div class="md:col-span-1 flex justify-center" data-aos="zoom-in" data-aos-delay="100">
-        <div class="relative w-full max-w-xs group">
-          <img alt="Sergio Gómez de Aranda" 
-               class="object-cover w-64 h-64 rounded-lg mx-auto shadow-2xl border-4 border-gray-800 transition-transform duration-300" 
-               src="https://i.imgur.com/XsgPdkL.jpeg"/>
+      <div class="text-center mb-16 max-w-2xl mx-auto" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-white">Sobre Mí</h2>
+        <p class="text-[var(--text-secondary)] mt-3 text-lg">
+          Persistencia, constancia y pasión por el desarrollo móvil.
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 items-center">
+        
+        <div class="md:col-span-1 flex justify-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="relative w-full max-w-xs group">
+            <img alt="Sergio Gómez de Aranda" 
+                 class="object-cover w-64 h-64 rounded-lg mx-auto shadow-2xl border-4 border-gray-800 transition-transform duration-300" 
+                 src="https://i.imgur.com/XsgPdkL.jpeg"/>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 text-lg text-[var(--text-secondary)] leading-relaxed space-y-6" data-aos="fade-left" data-aos-delay="200">
+          <p>
+            Hola, soy <strong class="text-white">Sergio Gómez de Aranda</strong> (Tirex), programador especializado en el desarrollo de aplicaciones móviles, con <strong class="text-white">más de 2 años dedicados de forma intensa</strong> a aprender, practicar y crear proyectos en este ámbito.
+          </p>
+          <p>
+            Me considero una persona <strong class="text-white">persistente</strong> y <strong class="text-white">constante</strong>, que disfruta afrontando retos complejos y buscando siempre soluciones eficientes. 
+            Mi objetivo es lograr un <strong class="text-white">código limpio</strong>, un <strong class="text-white">rendimiento sólido</strong> y una experiencia de usuario que realmente marque la diferencia.
+          </p>
+          <p>
+            Sigo en constante evolución, aprendiendo nuevas técnicas y herramientas para mantenerme siempre un paso por delante en el mundo del desarrollo móvil.
+          </p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="md:col-span-2 text-lg text-[var(--text-secondary)] leading-relaxed space-y-6" data-aos="fade-left" data-aos-delay="200">
-        <p>
-          Hola, soy <strong class="text-white">Sergio Gómez de Aranda</strong> (Tirex), programador especializado en el desarrollo de aplicaciones móviles, con <strong class="text-white">más de 2 años dedicados de forma intensa</strong> a aprender, practicar y crear proyectos en este ámbito.
-        </p>
-        <p>
-          Me considero una persona <strong class="text-white">persistente</strong> y <strong class="text-white">constante</strong>, que disfruta afrontando retos complejos y buscando siempre soluciones eficientes. 
-          Mi objetivo es lograr un <strong class="text-white">código limpio</strong>, un <strong class="text-white">rendimiento sólido</strong> y una experiencia de usuario que realmente marque la diferencia.
-        </p>
-        <p>
-          Sigo en constante evolución, aprendiendo nuevas técnicas y herramientas para mantenerme siempre un paso por delante en el mundo del desarrollo móvil.
-        </p>
+
+
+  <section id="habilidades" class="py-16 bg-[var(--bg-section)]">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-white mb-10 text-center">Habilidades Técnicas</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+
+        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+          <h3 class="text-lg font-bold text-white">Compose Multiplatform</h3>
+        </div>
+
+        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+          <h3 class="text-lg font-bold text-white">Kotlin</h3>
+        </div>
+
+        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+          <h3 class="text-lg font-bold text-white">Jetpack Compose</h3>
+        </div>
+
+        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+          <h3 class="text-lg font-bold text-white">MySQL</h3>
+        </div>
+
+        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+          <h3 class="text-lg font-bold text-white">Java</h3>
+        </div>
+
+        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
+          <h3 class="text-lg font-bold text-white">Firebase</h3>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-
-<section id="habilidades" class="py-16 bg-[var(--bg-section)]">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-white mb-10 text-center">Habilidades Técnicas</h2>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-
-      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
-        <h3 class="text-lg font-bold text-white">Compose Multiplatform</h3>
-      </div>
-
-      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
-        <h3 class="text-lg font-bold text-white">Kotlin</h3>
-      </div>
-
-      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
-        <h3 class="text-lg font-bold text-white">Jetpack Compose</h3>
-      </div>
-
-      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
-        <h3 class="text-lg font-bold text-white">MySQL</h3>
-      </div>
-
-      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
-        <h3 class="text-lg font-bold text-white">Java</h3>
-      </div>
-
-      <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 flex items-center justify-center text-center transition-transform duration-300 shadow-xl min-h-[160px]">
-        <h3 class="text-lg font-bold text-white">Firebase</h3>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<section class="py-24 bg-[var(--bg-primary)]" id="apps">
+  <section class="py-24 bg-[var(--bg-primary)]" id="apps">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold text-white">Mi Portfolio de Apps</h2>
@@ -428,11 +449,13 @@
   const mobileMenuLinks = mobileMenu.querySelectorAll('a');
 
   menuButton.addEventListener('click', () => {
+    menuButton.classList.toggle('open');
     mobileMenu.classList.toggle('hidden');
   });
 
   mobileMenuLinks.forEach(link => {
     link.addEventListener('click', () => {
+      menuButton.classList.remove('open');
       mobileMenu.classList.add('hidden');
     });
   });
